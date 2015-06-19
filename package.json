@@ -1,0 +1,12 @@
+{
+  "name": "GraphiteAlertSystem",
+  "version": "0.1.0",
+  "description": "Graphite to pagerduty alert System",
+  "author": "Marcus David Bronstein",
+  "dependencies": {
+    "cli": "0.8.x",
+    "coffee-script": "1.9.x",
+    "request":"2.58.x"
+  },
+  "engine": "node >= 0.10.x"
+}
