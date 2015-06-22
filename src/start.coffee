@@ -2,6 +2,9 @@ Server = require './server'
 Path   = require 'path'
 Cli    = require('cli').enable('status', 'version')
 Fs     = require 'fs'
+Studio = require
+requireDir = require('node-require-directory');
+requireDir('./src/actor');
 
 # Command Line Setup
 module.exports = entry_point = () ->
