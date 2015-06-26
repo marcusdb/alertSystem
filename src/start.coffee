@@ -3,8 +3,10 @@ Path   = require 'path'
 Cli    = require('cli').enable('status', 'version')
 Fs     = require 'fs'
 Studio = require
+
+config = require './src/config'
 requireDir = require('node-require-directory');
-requireDir('./src/actor');
+requireDir('./src/actors');
 
 # Command Line Setup
 module.exports = entry_point = () ->
@@ -17,7 +19,8 @@ module.exports = entry_point = () ->
   Cli.main (args, options) ->
     if Path.existsSync options.config
       try
-        conf = JSON.parse(Fs.readFileSync(options.config, 'utf-8'))
+        config.conf = JSON.parse(Fs.readFileSync(options.config, 'utf-8'))
+
       catch error
         Cli.debug "Error parsing config file: #{error}"
     else
