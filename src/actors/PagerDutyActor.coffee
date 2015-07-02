@@ -1,5 +1,5 @@
 Studio = require 'studio'
-config = require './src/config'
+
 
 new Studio.Actor {
   id: 'PagerDutyActor',

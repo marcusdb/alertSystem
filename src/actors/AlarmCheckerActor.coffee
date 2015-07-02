@@ -1,14 +1,12 @@
 Studio = require 'studio'
-config = require './src/config'
+
 
 new Studio.Actor {
   id: 'AlarmCheckerActor'
   process: (dataSet)->
     dataSet.data.forEach((element)=>
-      if !@checkDataCompleteness(element.datapoints)
-        @triggerAlarm(@buildAlarm())
-      else !@isBelowTriggerPoint element.datapoints @conditionBuilder(dataSet.trigger)
-        @triggerAlarm(@buildAlarm())
+      if !@checkDataCompleteness(element.datapoints) @triggerAlarm(@buildAlarm())
+      else !@isBelowTriggerPoint element.datapoints @conditionBuilder(dataSet.trigger) @triggerAlarm(@buildAlarm())
     )
 
   conditionBuilder: (trigger)->
@@ -37,7 +35,7 @@ new Studio.Actor {
     else return false
 
   triggerAlarm: (alarm)->
-    @send('GraphiteAPIActor',alarm);
+
 
   buildAlarm: (service_key, incident_key, event_type, description, details, contexts)->
     service_key: service_key
